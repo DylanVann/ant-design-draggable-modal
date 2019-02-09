@@ -1,0 +1,50 @@
+{
+    "name": "antd-draggable-modal",
+    "version": "0.0.1",
+    "description": "Modal from Ant Design, draggable.",
+    "author": "DylanVann",
+    "license": "MIT",
+    "repository": "DylanVann/antd-draggable-modal",
+    "main": "dist/index.js",
+    "module": "dist/index.es.js",
+    "scripts": {
+        "test": "react-scripts-ts test --env=jsdom",
+        "build": "rollup -c",
+        "start": "rollup -c -w"
+    },
+    "dependencies": {
+        "cxs": "^6.2.0"
+    },
+    "peerDependencies": {
+        "antd": "*",
+        "react": "*",
+        "react-dom": "*"
+    },
+    "devDependencies": {
+        "@types/jest": "^24.0.0",
+        "@types/react": "^16.8.2",
+        "@types/react-dom": "^16.8.0",
+        "antd": "^3.13.2",
+        "prettier": "^1.16.4",
+        "react": "^16.8.1",
+        "react-dom": "^16.8.1",
+        "rollup": "^1.1.2",
+        "rollup-plugin-auto-external": "^2.0.0",
+        "rollup-plugin-commonjs": "^9.2.0",
+        "rollup-plugin-json": "^3.1.0",
+        "rollup-plugin-node-resolve": "^4.0.0",
+        "rollup-plugin-peer-deps-external": "^2.2.0",
+        "rollup-plugin-typescript2": "^0.19.2",
+        "typescript": "^3.3.3"
+    },
+    "prettier": {
+        "printWidth": 100,
+        "semi": false,
+        "singleQuote": true,
+        "tabWidth": 4,
+        "trailingComma": "all"
+    },
+    "files": [
+        "dist"
+    ]
+}
