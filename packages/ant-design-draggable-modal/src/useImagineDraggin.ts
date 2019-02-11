@@ -32,7 +32,6 @@ export const useImagineDraggin = (
     useEffect(() => {
         const onMouseMove = (e: MouseEvent) => {
             if (dragging) {
-                e.preventDefault()
                 const { initX, firstX, initY, firstY } = initialDragState
                 setX(initX + e.clientX - firstX)
                 setY(initY + e.clientY - firstY)
