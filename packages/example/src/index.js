@@ -1,7 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './index.css'
 import App from './App'
+import { unregister } from './serviceWorker'
+import './index.css'
 
 const render = Component => {
     return ReactDOM.render(<Component />, document.getElementById('root'))
@@ -15,3 +16,5 @@ if (module.hot) {
         render(NextApp)
     })
 }
+
+unregister()
