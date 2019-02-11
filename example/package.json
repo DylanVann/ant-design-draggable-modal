@@ -3,7 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
-        "antd-draggable-modal": "link:..",
+        "ant-design-draggable-modal": "link:..",
         "react": "link:../node_modules/react",
         "react-dom": "link:../node_modules/react-dom",
         "react-scripts": "2.1.3"

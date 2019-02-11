@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react'
 import { Button } from 'antd'
-import { DraggableModal } from 'antd-draggable-modal'
+import { DraggableModal } from 'ant-design-draggable-modal'
 import 'antd/dist/antd.css'
 
 const ModalWithButton = () => {

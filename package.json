@@ -1,10 +1,10 @@
 {
-    "name": "antd-draggable-modal",
+    "name": "ant-design-draggable-modal",
     "version": "0.0.1",
     "description": "Modal from Ant Design, draggable.",
     "author": "DylanVann",
     "license": "MIT",
-    "repository": "DylanVann/antd-draggable-modal",
+    "repository": "DylanVann/ant-design-draggable-modal",
     "main": "dist/index.js",
     "module": "dist/index.es.js",
     "scripts": {

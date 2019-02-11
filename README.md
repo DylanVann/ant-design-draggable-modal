@@ -1,13 +1,13 @@
-# antd-draggable-modal
+# ant-design-draggable-modal
 
 > Modal from Ant Design, draggable.
 
-[![NPM](https://img.shields.io/npm/v/antd-draggable-modal.svg)](https://www.npmjs.com/package/antd-draggable-modal) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/ant-design-draggable-modal.svg)](https://www.npmjs.com/package/ant-design-draggable-modal)
 
 ## Install
 
 ```bash
-npm install --save antd-draggable-modal
+yarn add ant-design-draggable-modal
 ```
 
 ## Usage
@@ -15,14 +15,12 @@ npm install --save antd-draggable-modal
 ```tsx
 import * as React from 'react'
 
-import MyComponent from 'antd-draggable-modal'
+import { DraggableModal } from 'ant-design-draggable-modal'
 
 class Example extends React.Component {
-  render () {
-    return (
-      <MyComponent />
-    )
-  }
+    render() {
+        return <DraggableModal />
+    }
 }
 ```
 

@@ -1207,7 +1207,7 @@ ansi-styles@^3.2.0, ansi-styles@^3.2.1:
   dependencies:
     color-convert "^1.9.0"
 
-"antd-draggable-modal@link:..":
+"ant-design-draggable-modal@link:..":
   version "0.0.0"
   uid ""
 
