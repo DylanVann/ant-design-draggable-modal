@@ -7,15 +7,12 @@ const ModalWithButton = () => {
     const [visible, setVisible] = useState(true)
     const onOk = useCallback(() => setVisible(true), [])
     const onCancel = useCallback(() => setVisible(false), [])
-    const props = {
-        visible,
-        onOk,
-        onCancel,
-    }
     return (
         <>
             <Button onClick={onOk}>Open</Button>
-            <DraggableModal {...props}>Body text.</DraggableModal>
+            <DraggableModal visible={visible} onOk={onOk} onCancel={onCancel}>
+                Body text.
+            </DraggableModal>
         </>
     )
 }
