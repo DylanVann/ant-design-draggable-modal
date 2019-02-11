@@ -1,13 +1,15 @@
-# ant-design-draggable-modal
+<h1 align="center">Ant Design Draggable Modal</h1>
 
-> Modal from Ant Design, draggable.
+<div align="center">
 
-<center>
-    <img src="https://user-images.githubusercontent.com/1537615/52587290-bb16e780-2e07-11e9-9d20-0d359816940e.gif" />
-</center>
+Modal from Ant Design, draggable.
 
 [![NPM](https://img.shields.io/npm/v/ant-design-draggable-modal.svg)](https://www.npmjs.com/package/ant-design-draggable-modal)
 ![](https://img.shields.io/bundlephobia/minzip/ant-design-draggable-modal.svg?style=flat)
+
+    <img src="https://user-images.githubusercontent.com/1537615/52587290-bb16e780-2e07-11e9-9d20-0d359816940e.gif" alt="Example of ant-design-draggable-modal.">
+
+</div>
 
 [Example](https://distracted-hugle-66cb55.netlify.com/)
 
