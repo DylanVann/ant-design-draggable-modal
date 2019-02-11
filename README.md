@@ -1,6 +1,7 @@
 <h1 align="center">Ant Design Draggable Modal</h1>
 
 <div align="center">
+
 Modal from Ant Design, draggable.
 
 [![NPM](https://img.shields.io/npm/v/ant-design-draggable-modal.svg)](https://www.npmjs.com/package/ant-design-draggable-modal)
