@@ -28,7 +28,6 @@
         "@types/react": "^16.8.2",
         "@types/react-dom": "^16.8.0",
         "antd": "^3.13.2",
-        "prettier": "^1.16.4",
         "react": "^16.8.1",
         "react-dom": "^16.8.1",
         "rollup": "^1.1.2",
@@ -39,13 +38,6 @@
         "rollup-plugin-peer-deps-external": "^2.2.0",
         "rollup-plugin-typescript2": "^0.19.2",
         "typescript": "^3.3.3"
-    },
-    "prettier": {
-        "printWidth": 100,
-        "semi": false,
-        "singleQuote": true,
-        "tabWidth": 4,
-        "trailingComma": "all"
     },
     "files": [
         "dist"

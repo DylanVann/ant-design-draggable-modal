@@ -1265,13 +1265,6 @@ ansi-styles@^3.2.0, ansi-styles@^3.2.1:
   dependencies:
     color-convert "^1.9.0"
 
-ant-design-draggable-modal@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/ant-design-draggable-modal/-/ant-design-draggable-modal-0.0.1.tgz#6d1c1c3e3983f18ff8e7237a04923ad2c1df1b5d"
-  integrity sha512-/NpHhmKGdqd7Qfix+eQRyzcNYmUGYObU2/7vIev/H0PaKpIA2j1p7JwREN6nv5A9CGVRZNvC9SCz4UpVq3VXUQ==
-  dependencies:
-    cxs "^6.2.0"
-
 ant-design-palettes@^1.1.3:
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/ant-design-palettes/-/ant-design-palettes-1.1.3.tgz#84119b1a4d86363adc52a38d587e65336a0a27dd"

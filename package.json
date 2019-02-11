@@ -4,6 +4,16 @@
     "scripts": {
         "build": "yarn workspaces run build"
     },
+    "devDependencies": {
+        "prettier": "^1.16.4"
+    },
+    "prettier": {
+        "printWidth": 100,
+        "semi": false,
+        "singleQuote": true,
+        "tabWidth": 4,
+        "trailingComma": "all"
+    },
     "workspaces": [
         "packages/*"
     ]
