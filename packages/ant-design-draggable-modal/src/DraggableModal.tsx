@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { useState, useLayoutEffect } from 'react'
+import { useState, useLayoutEffect, useMemo } from 'react'
 import cxs from 'cxs'
 import { Modal } from 'antd'
 import { useWindowSize } from './useWindowSize'
@@ -28,6 +28,9 @@ const className = cxs({
         padding: '16px',
     },
 })
+
+const modalStyle = { margin: 0, paddingBottom: 0, pointerEvents: 'auto' }
+const headerStyle = { cursor: 'move' }
 
 export type DraggableModalProps = any
 
@@ -69,16 +72,23 @@ export const DraggableModal = (props: DraggableModalProps) => {
         setWidth(clamp(200, maxWidth, width))
         setHeight(clamp(200, maxHeight, height))
     }, [windowWidth, windowHeight, top, left, width, height, dragging, resizing])
+
+    const style = useMemo(() => ({ ...modalStyle, top, left, height }), [
+        modalStyle,
+        top,
+        left,
+        height,
+    ])
     return (
         <Modal
             wrapClassName={className}
-            style={{ margin: 0, paddingBottom: 0, top, left, height, pointerEvents: 'auto' }}
+            style={style}
             destroyOnClose={true}
             width={width}
             mask={false}
             maskClosable={false}
             title={
-                <div style={{ cursor: 'move' }} onMouseDown={onMouseDownDrag}>
+                <div style={headerStyle} onMouseDown={onMouseDownDrag}>
                     Title
                 </div>
             }
