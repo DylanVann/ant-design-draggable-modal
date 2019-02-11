@@ -28,13 +28,13 @@ Modal from Ant Design, draggable.
 -   [ ] Resize with option key.
 -   [ ] Multiple modals with managed `zIndex`.
 
-## Install
+## 📦 Install
 
 ```bash
 yarn add ant-design-draggable-modal
 ```
 
-## Usage
+## 🔨 Usage
 
 ```tsx
 import React, { useState, useCallback } from 'react'
@@ -57,7 +57,7 @@ const ModalWithButton = () => {
 }
 ```
 
-## Note
+## 📓 Note
 
 You should probably try to design your app not to need to use this, apps should usually not be window managers.
 
