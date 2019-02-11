@@ -11,7 +11,20 @@ Modal from Ant Design, draggable.
 
 </div>
 
-[Example](https://distracted-hugle-66cb55.netlify.com/)
+## [🌎 Example](https://distracted-hugle-66cb55.netlify.com/)
+
+## ✨ Features
+
+-   [x] Drag with title bar.
+-   [x] Resize with handle.
+-   [x] Keep in bounds.
+    -   [x] During drag.
+    -   [x] During resize.
+    -   [x] During resize window.
+-   [ ] Open from quadrants.
+-   [ ] Better escape key management.
+-   [ ] Resize with option key.
+-   [ ] Multiple modals with managed `zIndex`.
 
 ## Install
 
@@ -41,6 +54,10 @@ const ModalWithButton = () => {
     )
 }
 ```
+
+## Note
+
+You should probably try to design your app not to need to use this, apps should usually not be window managers.
 
 ## License
 
