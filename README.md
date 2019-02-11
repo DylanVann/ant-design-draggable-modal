@@ -2,6 +2,10 @@
 
 > Modal from Ant Design, draggable.
 
+<center>
+    <img src="https://user-images.githubusercontent.com/1537615/52587290-bb16e780-2e07-11e9-9d20-0d359816940e.gif" />
+</center>
+
 [![NPM](https://img.shields.io/npm/v/ant-design-draggable-modal.svg)](https://www.npmjs.com/package/ant-design-draggable-modal)
 ![](https://img.shields.io/bundlephobia/minzip/ant-design-draggable-modal.svg?style=flat)
 
