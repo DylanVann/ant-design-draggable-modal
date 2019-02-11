@@ -4,7 +4,11 @@
     "description": "Modal from Ant Design, draggable.",
     "author": "DylanVann",
     "license": "MIT",
-    "repository": "DylanVann/ant-design-draggable-modal",
+    "homepage": "https://github.com/DylanVann/ant-design-draggable-modal#readme",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/DylanVann/ant-design-draggable-modal.git"
+    },
     "main": "dist/index.js",
     "module": "dist/index.es.js",
     "scripts": {
