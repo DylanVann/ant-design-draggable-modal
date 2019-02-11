@@ -10,7 +10,7 @@ import { clamp } from './clamp'
 // Wish there was a better way.
 const className = cxs({
     pointerEvents: 'none',
-    overflow: 'hidden',
+    overflow: 'hidden !important',
     ' > .ant-modal': {
         display: 'flex',
         maxWidth: 'none',
@@ -58,19 +58,34 @@ export const DraggableModal = (props: DraggableModalProps) => {
         if (windowWidth === undefined) return
         if (windowHeight === undefined) return
 
-        // We try to push it over.
-        const maxLeft = windowWidth - width
-        const maxTop = windowHeight - height
-        const newLeft = clamp(0, maxLeft, left)
-        const newTop = clamp(0, maxTop, top)
-        setLeft(newLeft)
-        setTop(newTop)
+        const clampDrag = () => {
+            const maxLeft = windowWidth - width
+            const maxTop = windowHeight - height
+            const x = clamp(0, maxLeft, left)
+            const y = clamp(0, maxTop, top)
+            setLeft(x)
+            setTop(y)
+            return { x, y }
+        }
 
-        // If that's not enough then resize too.
-        const maxWidth = windowWidth - newLeft
-        const maxHeight = windowHeight - newTop
-        setWidth(clamp(200, maxWidth, width))
-        setHeight(clamp(200, maxHeight, height))
+        const clampResize = ({ x = left, y = top } = {}) => {
+            const maxWidth = windowWidth - x
+            const maxHeight = windowHeight - y
+            setWidth(clamp(200, maxWidth, width))
+            setHeight(clamp(200, maxHeight, height))
+        }
+
+        if (dragging) {
+            clampDrag()
+        } else if (resizing) {
+            clampResize()
+        } else {
+            // We try to push it over.
+            const newCoordinates = clampDrag()
+            // If that's not enough then resize too.
+            // It needs to be done with the new coordinates from the drag clamping.
+            clampResize(newCoordinates)
+        }
     }, [windowWidth, windowHeight, top, left, width, height, dragging, resizing])
 
     const style = useMemo(() => ({ ...modalStyle, top, left, height }), [
