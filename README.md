@@ -26,12 +26,12 @@ const ModalWithButton = () => {
     const onOk = useCallback(() => setVisible(true), [])
     const onCancel = useCallback(() => setVisible(false), [])
     return (
-        <>
+        <div>
             <Button onClick={onOk}>Open</Button>
             <DraggableModal visible={visible} onOk={onOk} onCancel={onCancel}>
                 Body text.
             </DraggableModal>
-        </>
+        </div>
     )
 }
 ```
