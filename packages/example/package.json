@@ -13,7 +13,7 @@
         "extends": "react-app"
     },
     "dependencies": {
-        "ant-design-draggable-modal": "^0.0.4",
+        "ant-design-draggable-modal": "^0.0.5",
         "react": "^16.8.1",
         "react-dom": "^16.8.1",
         "react-scripts": "^2.1.3"
