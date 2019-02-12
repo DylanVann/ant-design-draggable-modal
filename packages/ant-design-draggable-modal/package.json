@@ -2,13 +2,16 @@
     "name": "ant-design-draggable-modal",
     "version": "0.0.2",
     "description": "Modal from Ant Design, draggable.",
-    "author": "DylanVann",
-    "license": "MIT",
     "homepage": "https://github.com/DylanVann/ant-design-draggable-modal#readme",
     "repository": {
         "type": "git",
         "url": "https://github.com/DylanVann/ant-design-draggable-modal.git"
     },
+    "license": "MIT",
+    "author": "DylanVann",
+    "files": [
+        "dist"
+    ],
     "main": "dist/index.js",
     "module": "dist/index.es.js",
     "scripts": {
@@ -17,11 +20,6 @@
     },
     "dependencies": {
         "cxs": "^6.2.0"
-    },
-    "peerDependencies": {
-        "antd": "*",
-        "react": "*",
-        "react-dom": "*"
     },
     "devDependencies": {
         "@types/jest": "^24.0.0",
@@ -39,7 +37,9 @@
         "rollup-plugin-typescript2": "^0.19.2",
         "typescript": "^3.3.3"
     },
-    "files": [
-        "dist"
-    ]
+    "peerDependencies": {
+        "antd": "*",
+        "react": "*",
+        "react-dom": "*"
+    }
 }

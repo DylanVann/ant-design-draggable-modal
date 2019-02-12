@@ -1,11 +1,12 @@
 {
-    "license": "MIT",
     "private": true,
+    "license": "MIT",
+    "workspaces": [
+        "packages/*"
+    ],
     "scripts": {
-        "build": "yarn workspaces run build"
-    },
-    "devDependencies": {
-        "prettier": "^1.16.4"
+        "build": "yarn workspaces run build",
+        "start": "yarn workspaces run start"
     },
     "prettier": {
         "printWidth": 100,
@@ -14,7 +15,7 @@
         "tabWidth": 4,
         "trailingComma": "all"
     },
-    "workspaces": [
-        "packages/*"
-    ]
+    "devDependencies": {
+        "prettier": "^1.16.4"
+    }
 }
