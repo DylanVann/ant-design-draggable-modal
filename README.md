@@ -40,7 +40,7 @@ yarn add ant-design-draggable-modal
 ```tsx
 import React, { useState, useCallback } from 'react'
 import { Button } from 'antd'
-import { DraggableModal } from 'ant-design-draggable-modal'
+import { DraggableModal, DraggableModalProvider } from 'ant-design-draggable-modal'
 import 'antd/dist/antd.css'
 
 const ModalWithButton = () => {
