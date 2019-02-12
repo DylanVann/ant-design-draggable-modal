@@ -50,7 +50,11 @@ export const DraggableModal = (props: DraggableModalProps) => {
     const modalProvider = useContext(DraggableModalContext)
     const zIndex = modalProvider.state[id]
     const bringToFront = useCallback(() => modalProvider.bringToFront(id), [modalProvider, id])
-    useEffect(() => modalProvider.registerModal(id), [id])
+    // Register and unregister.
+    useEffect(() => {
+        modalProvider.registerModal(id)
+        return () => modalProvider.unregisterModal(id)
+    }, [modalProvider, id])
 
     // Bring this to the front if it's been opened with props.
     const { visible } = props
