@@ -24,6 +24,7 @@ Modal from Ant Design, draggable.
     -   [x] During resize.
     -   [x] During resize window.
 -   [x] Multiple modals with managed `zIndex`.
+-   [ ] Better API for using as a controlled component.
 -   [ ] Open from center.
 -   [ ] Open from quadrants.
 -   [ ] Better escape key management.
