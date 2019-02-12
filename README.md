@@ -36,6 +36,8 @@ Modal from Ant Design, draggable.
 yarn add ant-design-draggable-modal
 ```
 
+NOTE: You must use `react@16.8.0` and `react-dom@16.8.0` or higher.
+
 ## 🔨 Usage
 
 ```tsx

@@ -39,8 +39,8 @@
         "typescript": "^3.3.3"
     },
     "peerDependencies": {
-        "antd": "*",
-        "react": "*",
-        "react-dom": "*"
+        "antd": "^3.13.2",
+        "react": "^16.8.0",
+        "react-dom": "^16.8.0"
     }
 }
