@@ -10,7 +10,7 @@ Modal from Ant Design, draggable.
 </div>
 
 <div align="center">
-    <img src="https://user-images.githubusercontent.com/1537615/52587290-bb16e780-2e07-11e9-9d20-0d359816940e.gif" alt="Example of ant-design-draggable-modal.">
+    <img src="https://user-images.githubusercontent.com/1537615/52606003-06002180-2e3f-11e9-83f2-21fc6212924a.gif" alt="Example of ant-design-draggable-modal.">
 </div>
 
 ## 🌎 [Example](https://distracted-hugle-66cb55.netlify.com/)
