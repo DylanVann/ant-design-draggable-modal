@@ -54,7 +54,7 @@ export const DraggableModal = (props: DraggableModalProps) => {
     useEffect(() => {
         modalProvider.registerModal(id)
         return () => modalProvider.unregisterModal(id)
-    }, [modalProvider, id])
+    }, [modalProvider.unregisterModal, id])
 
     // Bring this to the front if it's been opened with props.
     const { visible } = props

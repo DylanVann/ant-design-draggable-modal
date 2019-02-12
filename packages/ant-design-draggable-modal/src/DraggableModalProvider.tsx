@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import { DraggableModalContext } from './DraggableModalContext'
 
 export const DraggableModalProvider = ({ children }: { children: React.ReactNode }) => {
@@ -8,29 +8,41 @@ export const DraggableModalProvider = ({ children }: { children: React.ReactNode
     const [maxZIndex, setMaxZIndex] = useState(0)
     const incrementMaxZIndex = () => setMaxZIndex(v => v + 1)
     const [state, setState] = useState({})
-    const value = {
-        state,
-        registerModal(id: string) {
+    const registerModal = useCallback(
+        (id: string) => {
             setState(state => ({
                 ...state,
                 [id]: maxZIndex,
             }))
             incrementMaxZIndex()
         },
-        unregisterModal(id: string) {
+        [maxZIndex, setState],
+    )
+    const unregisterModal = useCallback(
+        (id: string) => {
             setState(state => {
                 const clone = { ...state }
                 delete clone[id]
                 return clone
             })
         },
-        bringToFront(id: string) {
+        [setState],
+    )
+    const bringToFront = useCallback(
+        (id: string) => {
             setState(state => ({
                 ...state,
                 [id]: maxZIndex,
             }))
             incrementMaxZIndex()
         },
+        [maxZIndex, setState, incrementMaxZIndex],
+    )
+    const value = {
+        state,
+        registerModal,
+        unregisterModal,
+        bringToFront,
     }
     return <DraggableModalContext.Provider value={value}>{children}</DraggableModalContext.Provider>
 }
