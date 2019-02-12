@@ -76,7 +76,7 @@ export const DraggableModal = (props: DraggableModalProps) => {
             bringToFront()
             onMouseDownDrag(e)
         },
-        [bringToFront, onMouseDownDrag],
+        [bringToFront, onMouseDownDrag, left, setLeft, top, setTop, dragging, setDragging],
     )
 
     const onMouseDownResizeWrapped = useCallback(
@@ -84,7 +84,7 @@ export const DraggableModal = (props: DraggableModalProps) => {
             bringToFront()
             onMouseDownResize(e)
         },
-        [bringToFront, onMouseDownDrag],
+        [bringToFront, onMouseDownDrag, width, setWidth, height, setHeight, resizing, setResizing],
     )
 
     // All the logic to keep the modal within bounds.
