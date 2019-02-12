@@ -69,7 +69,7 @@ const App = () => (
 )
 ```
 
-## 📓 Note
+## ⚠️ User Experience Warning
 
 You should probably try to design your app not to need to use this, apps should usually not be window managers.
 
