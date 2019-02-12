@@ -76,6 +76,8 @@ export const DraggableModal = (props: DraggableModalProps) => {
             bringToFront()
             onMouseDownDrag(e)
         },
+        // You'd think onMouseDownDrag would be referentially not equal if
+        // e.g. left changed, but it does not work without all the dependencies here.
         [bringToFront, onMouseDownDrag, left, setLeft, top, setTop, dragging, setDragging],
     )
 
