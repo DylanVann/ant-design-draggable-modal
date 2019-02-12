@@ -19,7 +19,8 @@
         "start": "rollup -c -w"
     },
     "dependencies": {
-        "cxs": "^6.2.0"
+        "cxs": "^6.2.0",
+        "react-uid": "^2.2.0"
     },
     "devDependencies": {
         "@types/jest": "^24.0.0",

@@ -1,15 +1,20 @@
 import React, { useState, useCallback } from 'react'
-import { Button } from 'antd'
-import { DraggableModal } from 'ant-design-draggable-modal'
+import { Button, Layout, Breadcrumb } from 'antd'
+import { DraggableModal, DraggableModalProvider } from 'ant-design-draggable-modal'
 import 'antd/dist/antd.css'
 
+const { Content, Footer } = Layout
+
 const ModalWithButton = () => {
-    const [visible, setVisible] = useState(true)
+    const [visible, setVisible] = useState(false)
     const onOk = useCallback(() => setVisible(true), [])
     const onCancel = useCallback(() => setVisible(false), [])
+    const onToggle = useCallback(() => setVisible(v => !v), [])
     return (
         <>
-            <Button onClick={onOk}>Open</Button>
+            <Button onClick={onToggle} type={visible ? 'danger' : undefined} style={{ margin: 10 }}>
+                {visible ? 'Close' : 'Open'}
+            </Button>
             <DraggableModal visible={visible} onOk={onOk} onCancel={onCancel}>
                 Body text.
             </DraggableModal>
@@ -18,9 +23,26 @@ const ModalWithButton = () => {
 }
 
 const App = () => (
-    <>
-        <ModalWithButton />
-    </>
+    <DraggableModalProvider>
+        <Layout className="layout" style={{ minHeight: '100vh' }}>
+            <Content style={{ padding: '0 50px' }}>
+                <Breadcrumb style={{ margin: '16px 0' }}>
+                    <Breadcrumb.Item>Ant Design</Breadcrumb.Item>
+                    <Breadcrumb.Item>Draggable Modal</Breadcrumb.Item>
+                </Breadcrumb>
+                <div style={{ background: '#fff', padding: 24 }}>
+                    <ModalWithButton />
+                    <ModalWithButton />
+                    <ModalWithButton />
+                </div>
+            </Content>
+            <Footer style={{ textAlign: 'center' }}>
+                <a href="https://github.com/DylanVann/ant-design-draggable-modal">GitHub</a>
+                {' | '}
+                <a href="https://twitter.com/atomarranger">@atomarranger</a>
+            </Footer>
+        </Layout>
+    </DraggableModalProvider>
 )
 
 export default App

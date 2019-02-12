@@ -23,10 +23,10 @@ Modal from Ant Design, draggable.
     -   [x] During drag.
     -   [x] During resize.
     -   [x] During resize window.
+-   [x] Multiple modals with managed `zIndex`.
 -   [ ] Open from quadrants.
 -   [ ] Better escape key management.
 -   [ ] Resize with option key.
--   [ ] Multiple modals with managed `zIndex`.
 
 ## 📦 Install
 
@@ -43,7 +43,7 @@ import { DraggableModal } from 'ant-design-draggable-modal'
 import 'antd/dist/antd.css'
 
 const ModalWithButton = () => {
-    const [visible, setVisible] = useState(true)
+    const [visible, setVisible] = useState(false)
     const onOk = useCallback(() => setVisible(true), [])
     const onCancel = useCallback(() => setVisible(false), [])
     return (
@@ -55,6 +55,16 @@ const ModalWithButton = () => {
         </>
     )
 }
+
+// DraggableModalProvider manages the zIndex
+// of DraggableModals rendered beneath it.
+const App = () => (
+    <DraggableModalProvider>
+        <ModalWithButton />
+        <ModalWithButton />
+        <ModalWithButton />
+    </DraggableModalProvider>
+)
 ```
 
 ## 📓 Note

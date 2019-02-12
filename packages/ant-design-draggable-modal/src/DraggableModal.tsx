@@ -1,11 +1,14 @@
 import * as React from 'react'
-import { useState, useLayoutEffect, useMemo } from 'react'
+import { useState, useEffect, useCallback, useLayoutEffect, useMemo, useContext } from 'react'
 import cxs from 'cxs'
+import { useUID } from 'react-uid'
 import { Modal } from 'antd'
 import { useWindowSize } from './useWindowSize'
 import { ResizeHandle } from './ResizeHandle'
 import { useImagineDraggin } from './useImagineDraggin'
 import { clamp } from './clamp'
+import { DraggableModalContext } from './DraggableModalContext'
+import { usePrevious } from './usePrevious'
 
 // Wish there was a better way.
 const className = cxs({
@@ -42,6 +45,22 @@ export const DraggableModal = (props: DraggableModalProps) => {
     const [width, setWidth] = useState(500)
     const [height, setHeight] = useState(300)
 
+    // Manage zIndex.
+    const id = useUID()
+    const modalProvider = useContext(DraggableModalContext)
+    const zIndex = modalProvider.state[id]
+    const bringToFront = useCallback(() => modalProvider.bringToFront(id), [modalProvider, id])
+    useEffect(() => modalProvider.registerModal(id), [id])
+
+    // Bring this to the front if it's been opened with props.
+    const { visible } = props
+    const visiblePrevious = usePrevious(visible)
+    useEffect(() => {
+        if (visible && !visiblePrevious) {
+            bringToFront()
+        }
+    }, [visible, visiblePrevious])
+
     const onMouseDownDrag = useImagineDraggin(left, setLeft, top, setTop, dragging, setDragging)
     const onMouseDownResize = useImagineDraggin(
         width,
@@ -50,6 +69,22 @@ export const DraggableModal = (props: DraggableModalProps) => {
         setHeight,
         resizing,
         setResizing,
+    )
+
+    const onMouseDownDragWrapped = useCallback(
+        e => {
+            bringToFront()
+            onMouseDownDrag(e)
+        },
+        [bringToFront, onMouseDownDrag],
+    )
+
+    const onMouseDownResizeWrapped = useCallback(
+        e => {
+            bringToFront()
+            onMouseDownResize(e)
+        },
+        [bringToFront, onMouseDownDrag],
     )
 
     // All the logic to keep the modal within bounds.
@@ -102,15 +137,16 @@ export const DraggableModal = (props: DraggableModalProps) => {
             width={width}
             mask={false}
             maskClosable={false}
+            zIndex={zIndex}
             title={
-                <div style={headerStyle} onMouseDown={onMouseDownDrag}>
+                <div style={headerStyle} onMouseDown={onMouseDownDragWrapped}>
                     Title
                 </div>
             }
             {...props}
         >
             {props.children}
-            <ResizeHandle onMouseDown={onMouseDownResize} />
+            <ResizeHandle onMouseDown={onMouseDownResizeWrapped} />
         </Modal>
     )
 }

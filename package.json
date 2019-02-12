@@ -6,7 +6,7 @@
     ],
     "scripts": {
         "build": "yarn workspaces run build",
-        "start": "yarn workspaces run start"
+        "start": "wsrun --parallel start"
     },
     "prettier": {
         "printWidth": 100,
@@ -16,6 +16,7 @@
         "trailingComma": "all"
     },
     "devDependencies": {
-        "prettier": "^1.16.4"
+        "prettier": "^1.16.4",
+        "wsrun": "^3.6.4"
     }
 }
