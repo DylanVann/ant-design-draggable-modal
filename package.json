@@ -1,13 +1,14 @@
 {
+    "name": "ant-design-draggable-modal",
     "private": true,
     "license": "MIT",
     "workspaces": [
         "packages/*"
     ],
     "scripts": {
-        "build": "yarn workspaces run build",
-        "test": "yarn workspaces run test",
-        "start": "wsrun --parallel start"
+        "build": "lerna run build --stream",
+        "start": "lerna run start --parallel",
+        "test": "lerna run test --parallel"
     },
     "prettier": {
         "printWidth": 100,
@@ -17,7 +18,7 @@
         "trailingComma": "all"
     },
     "devDependencies": {
-        "prettier": "^1.16.4",
-        "wsrun": "^3.6.4"
+        "lerna": "^3.11.1",
+        "prettier": "^1.16.4"
     }
 }
