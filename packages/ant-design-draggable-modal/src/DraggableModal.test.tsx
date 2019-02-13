@@ -20,7 +20,7 @@ test('renders', () => {
         aria-labelledby="rcDialogTitle0"
         class="ant-modal-wrap x0 x1 x2 x3 x4 x5 x6 x7 x8 x9"
         role="dialog"
-        style="z-index: 0;"
+        style="z-index: 1;"
         tabindex="-1"
       >
         <div

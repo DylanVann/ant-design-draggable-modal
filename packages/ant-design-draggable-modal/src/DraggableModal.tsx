@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { useState, useEffect, useCallback, useLayoutEffect, useMemo, useContext } from 'react'
 import cxs from 'cxs'
+import { useState, useEffect, useCallback, useLayoutEffect, useMemo, useContext } from 'react'
 import { useUID } from 'react-uid'
 import { Modal } from 'antd'
 import { useWindowSize } from './useWindowSize'
@@ -48,8 +48,8 @@ export const DraggableModal = (props: DraggableModalProps) => {
     // Manage zIndex.
     const id = useUID()
     const modalProvider = useContext(DraggableModalContext)
-    const zIndex = modalProvider.state[id]
-    const bringToFront = useCallback(() => modalProvider.bringToFront(id), [modalProvider, id])
+    const zIndex = modalProvider.state.modals[id]
+    const bringToFront = useCallback(() => modalProvider.focus(id), [modalProvider.focus, id])
     // Register and unregister.
     useEffect(() => {
         modalProvider.registerModal(id)
