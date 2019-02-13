@@ -6,6 +6,7 @@
     ],
     "scripts": {
         "build": "yarn workspaces run build",
+        "test": "yarn workspaces run test",
         "start": "wsrun --parallel start"
     },
     "prettier": {

@@ -16,7 +16,14 @@
     "module": "dist/index.es.js",
     "scripts": {
         "build": "rollup -c",
-        "start": "rollup -c -w"
+        "start": "rollup -c -w",
+        "test": "jest"
+    },
+    "jest": {
+        "preset": "ts-jest",
+        "setupFilesAfterEnv": [
+            "react-testing-library/cleanup-after-each"
+        ]
     },
     "dependencies": {
         "cxs": "^6.2.0",
@@ -27,8 +34,10 @@
         "@types/react": "^16.8.2",
         "@types/react-dom": "^16.8.0",
         "antd": "^3.13.2",
+        "jest": "^24.1.0",
         "react": "^16.8.1",
         "react-dom": "^16.8.1",
+        "react-testing-library": "^5.6.1",
         "rollup": "^1.1.2",
         "rollup-plugin-auto-external": "^2.0.0",
         "rollup-plugin-commonjs": "^9.2.0",
@@ -36,6 +45,7 @@
         "rollup-plugin-node-resolve": "^4.0.0",
         "rollup-plugin-peer-deps-external": "^2.2.0",
         "rollup-plugin-typescript2": "^0.19.2",
+        "ts-jest": "^23.10.5",
         "typescript": "^3.3.3"
     },
     "peerDependencies": {
