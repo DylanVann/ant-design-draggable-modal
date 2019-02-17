@@ -18,15 +18,15 @@ test('renders', () => {
     <div>
       <div
         aria-labelledby="rcDialogTitle0"
-        class="ant-modal-wrap x0 x1 x2 x3 x4 x5 x6 x7 x8 x9"
+        class="ant-modal-wrap ant-design-draggable-modal"
         role="dialog"
-        style="z-index: 1;"
+        style="z-index: 2;"
         tabindex="-1"
       >
         <div
           class="ant-modal zoom-appear"
           role="document"
-          style="margin: 0px; padding-bottom: 0px; pointer-events: auto; top: 0px; left: 0px; height: 300px; width: 500px;"
+          style="margin: 0px; padding-bottom: 0px; pointer-events: auto; top: 234px; left: 262px; height: 300px; width: 500px;"
         >
           <div
             style="width: 0px; height: 0px; overflow: hidden;"
@@ -82,10 +82,10 @@ test('renders', () => {
               class="ant-modal-body"
             >
               <div
-                style="position: absolute; right: -10px; bottom: -10px; cursor: se-resize; width: 44px; height: 44px;"
+                class="ant-design-draggable-modal-resize-handle"
               >
                 <div
-                  style="position: absolute; border-top: 0; border-left: 0; width: 12px; height: 12px; right: 14px; bottom: 14px;"
+                  class="ant-design-draggable-modal-resize-handle-inner"
                 />
               </div>
             </div>

@@ -1,18 +1,17 @@
+import * as React from 'react'
 import { useState, useEffect, useCallback } from 'react'
 
-export const useImagineDraggin = (
+export const useDrag = (
     x: number,
-    setX: (v: number) => void,
     y: number,
-    setY: (v: number) => void,
-    dragging: boolean,
-    setDragging: (v: boolean) => void,
-) => {
+    onDrag: (x: number, y: number) => void,
+): ((e: React.MouseEvent) => void) => {
+    const [dragging, setDragging] = useState(false)
     const [initialDragState, setInitialDragState] = useState({
         initX: 0,
         initY: 0,
-        firstX: 0,
-        firstY: 0,
+        mouseDownX: 0,
+        mouseDownY: 0,
     })
 
     const onMouseDown = useCallback(
@@ -21,28 +20,31 @@ export const useImagineDraggin = (
             setInitialDragState({
                 initX: x,
                 initY: y,
-                firstX: e.clientX,
-                firstY: e.clientY,
+                mouseDownX: e.clientX,
+                mouseDownY: e.clientY,
             })
             setDragging(true)
         },
-        [x, y, setDragging],
+        [x, y, setDragging, setInitialDragState],
     )
 
     useEffect(() => {
-        const onMouseMove = (e: MouseEvent) => {
+        const onMouseMove = (e: MouseEvent): void => {
             if (dragging) {
-                const { initX, firstX, initY, firstY } = initialDragState
-                setX(initX + e.clientX - firstX)
-                setY(initY + e.clientY - firstY)
+                const { initX, mouseDownX, initY, mouseDownY } = initialDragState
+                let dx = e.clientX - mouseDownX
+                let dy = e.clientY - mouseDownY
+                const x = initX + dx
+                const y = initY + dy
+                onDrag(x, y)
             }
         }
         window.addEventListener('mousemove', onMouseMove, { passive: true })
         return () => window.removeEventListener('mousemove', onMouseMove)
-    }, [initialDragState, dragging, setX, setY])
+    }, [initialDragState, dragging, onDrag])
 
     useEffect(() => {
-        const onMouseUp = () => {
+        const onMouseUp = (): void => {
             setDragging(false)
         }
         window.addEventListener('mouseup', onMouseUp)

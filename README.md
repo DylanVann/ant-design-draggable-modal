@@ -26,8 +26,8 @@ Modal from Ant Design, draggable.
     -   [x] During resize.
     -   [x] During resize window.
 -   [x] Multiple modals with managed `zIndex`.
+-   [x] Open from center.
 -   [ ] Better API for using as a controlled component.
--   [ ] Open from center.
 -   [ ] Open from quadrants.
 -   [ ] Better escape key management.
 -   [ ] Resize with option key.
@@ -47,6 +47,7 @@ import React, { useState, useCallback } from 'react'
 import { Button } from 'antd'
 import { DraggableModal, DraggableModalProvider } from 'ant-design-draggable-modal'
 import 'antd/dist/antd.css'
+import 'ant-design-draggable-modal/dist/index.css'
 
 const ModalWithButton = () => {
     const [visible, setVisible] = useState(false)

@@ -1,8 +1,9 @@
 import typescript from 'rollup-plugin-typescript2'
 import commonjs from 'rollup-plugin-commonjs'
-import autoExternal from 'rollup-plugin-auto-external';
+import autoExternal from 'rollup-plugin-auto-external'
 import resolve from 'rollup-plugin-node-resolve'
 import json from 'rollup-plugin-json'
+import postcss from 'rollup-plugin-postcss'
 
 import pkg from './package.json'
 
@@ -25,6 +26,9 @@ export default {
     plugins: [
         json(),
         autoExternal(),
+        postcss({
+            extract: true,
+        }),
         resolve(),
         typescript({
             rollupCommonJSResolveHack: true,

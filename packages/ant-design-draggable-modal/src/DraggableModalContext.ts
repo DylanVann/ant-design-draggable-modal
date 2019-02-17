@@ -1,12 +1,16 @@
 import * as React from 'react'
+import { ModalsState } from './draggableModalReducer'
 
-export type DraggableModalContextValue = {
-    state: { maxZIndex: number; modals: { [key: string]: number } }
-    registerModal: (id: string) => void
-    unregisterModal: (id: string) => void
-    focus: (id: string) => void
+export interface DraggableModalContextMethods {
+    onVisible: (id: string) => void
+    onMount: (id: string) => void
+    onUnmount: (id: string) => void
+    onDrag: (id: string, x: number, y: number) => void
+    onResize: (id: string, x: number, y: number, width: number, height: number) => void
 }
 
-export const DraggableModalContext = React.createContext<DraggableModalContextValue>(
-    undefined as any,
-)
+export interface DraggableModalContextValue extends DraggableModalContextMethods {
+    state: ModalsState
+}
+
+export const DraggableModalContext = React.createContext<DraggableModalContextValue | null>(null)
