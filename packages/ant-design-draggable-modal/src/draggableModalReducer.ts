@@ -39,7 +39,7 @@ export const initialModalState: ModalState = {
     zIndex: 0,
 }
 
-type Action =
+export type Action =
     | { type: 'visible'; id: ModalID }
     | { type: 'unmount'; id: ModalID }
     | { type: 'mount'; id: ModalID }

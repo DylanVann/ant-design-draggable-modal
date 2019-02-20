@@ -1,8 +1,8 @@
 import * as React from 'react'
-import { useCallback, useEffect, useReducer } from 'react'
+import { useEffect, useReducer } from 'react'
 import { DraggableModalContext } from './DraggableModalContext'
 import { getWindowSize } from './getWindowSize'
-import { draggableModalReducer, initialModalsState, ModalID } from './draggableModalReducer'
+import { draggableModalReducer, initialModalsState } from './draggableModalReducer'
 
 export const DraggableModalProvider = ({
     children,
@@ -21,19 +21,14 @@ export const DraggableModalProvider = ({
         return () => window.removeEventListener('resize', onResize)
     }, [dispatch])
 
-    const value = {
-        state,
-        onVisible: useCallback((id: ModalID) => dispatch({ type: 'visible', id }), [dispatch]),
-        onMount: useCallback((id: ModalID) => dispatch({ type: 'mount', id }), [dispatch]),
-        onUnmount: useCallback((id: ModalID) => dispatch({ type: 'unmount', id }), [dispatch]),
-        onDrag: useCallback((id: ModalID, x, y) => dispatch({ type: 'drag', id, x, y }), [
-            dispatch,
-        ]),
-        onResize: useCallback(
-            (id: ModalID, x, y, width, height) =>
-                dispatch({ type: 'resize', id, x, y, width, height }),
-            [dispatch],
-        ),
-    }
-    return <DraggableModalContext.Provider value={value}>{children}</DraggableModalContext.Provider>
+    return (
+        <DraggableModalContext.Provider
+            value={{
+                state,
+                dispatch,
+            }}
+        >
+            {children}
+        </DraggableModalContext.Provider>
+    )
 }

@@ -1,12 +1,8 @@
 import * as React from 'react'
-import { ModalsState } from './draggableModalReducer'
+import { Action, ModalsState } from './draggableModalReducer'
 
 export interface DraggableModalContextMethods {
-    onVisible: (id: string) => void
-    onMount: (id: string) => void
-    onUnmount: (id: string) => void
-    onDrag: (id: string, x: number, y: number) => void
-    onResize: (id: string, x: number, y: number, width: number, height: number) => void
+    dispatch: (action: Action) => void
 }
 
 export interface DraggableModalContextValue extends DraggableModalContextMethods {

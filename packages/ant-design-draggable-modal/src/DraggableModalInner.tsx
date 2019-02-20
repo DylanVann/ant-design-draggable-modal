@@ -20,22 +20,22 @@ interface ContextProps extends DraggableModalContextMethods {
 }
 
 export const DraggableModalInner = React.memo((props: DraggableModalInnerProps & ContextProps) => {
-    const { onMount, onUnmount, onVisible, onResize, onDrag, modalState, id } = props
+    const { dispatch, modalState, id } = props
 
     // Call on mount and unmount.
     useEffect(() => {
-        onMount(id)
-        return () => onUnmount(id)
-    }, [onMount, id, onUnmount])
+        dispatch({ type: 'mount', id })
+        return () => dispatch({ type: 'unmount', id })
+    }, [dispatch, id])
 
     // Bring this to the front if it's been opened with props.
     const { visible } = props
     const visiblePrevious = usePrevious(visible)
     useEffect(() => {
         if (visible && !visiblePrevious) {
-            onVisible(id)
+            dispatch({ type: 'visible', id })
         }
-    }, [visible, visiblePrevious, onVisible, id])
+    }, [visible, visiblePrevious, id, dispatch])
 
     const { zIndex, x, y, width, height } = modalState
 
@@ -45,11 +45,17 @@ export const DraggableModalInner = React.memo((props: DraggableModalInnerProps &
         height,
     ])
 
-    const onVisibleWithID = useCallback(() => onVisible(id), [id, onVisible])
-    const onDragWithID = useCallback((x: number, y: number) => onDrag(id, x, y), [onDrag, id])
+    const onVisibleWithID = useCallback(() => dispatch({ type: 'visible', id }), [id, dispatch])
+
+    const onDragWithID = useCallback(
+        (x: number, y: number) => dispatch({ type: 'drag', id, x, y }),
+        [dispatch, id],
+    )
+
     const onResizeWithID = useCallback(
-        (x: number, y: number, width: number, height: number) => onResize(id, x, y, width, height),
-        [onResize, id],
+        (x: number, y: number, width: number, height: number) =>
+            dispatch({ type: 'resize', id, x, y, width, height }),
+        [dispatch, id],
     )
 
     const onMouseDrag = useDrag(x, y, onDragWithID)
