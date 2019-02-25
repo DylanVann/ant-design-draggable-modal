@@ -4,9 +4,14 @@
 
 Modal from Ant Design, draggable.
 
-[![NPM](https://img.shields.io/npm/v/ant-design-draggable-modal.svg)](https://www.npmjs.com/package/ant-design-draggable-modal)
-[![BundlePhobia](https://img.shields.io/bundlephobia/minzip/ant-design-draggable-modal.svg?style=flat)](https://bundlephobia.com/result?p=ant-design-draggable-modal)
-![Twitter URL](https://img.shields.io/twitter/url/https/github.com/DylanVann/ant-design-draggable-modal.svg?style=social)
+[![Version][version-badge]][package]
+[![Downloads][downloads-badge]][npmtrends]
+[![BundlePhobia](https://img.shields.io/bundlephobia/minzip/ant-design-draggable-modal.svg?style=flat-square)](https://bundlephobia.com/result?p=ant-design-draggable-modal)
+[![MIT License][license-badge]][license]
+
+[![Watch on GitHub][github-watch-badge]][github-watch]
+[![Star on GitHub][github-star-badge]][github-star]
+[![Tweet][twitter-badge]][twitter]
 
 </div>
 
@@ -82,3 +87,24 @@ You should probably try to design your app not to need to use this, apps should 
 ## License
 
 MIT © [DylanVann](https://github.com/DylanVann)
+
+<!--
+Links:
+-->
+
+<!-- prettier-ignore-start -->
+
+[downloads-badge]: https://img.shields.io/npm/dm/ant-design-draggable-modal.svg?style=flat-square
+[npmtrends]: http://www.npmtrends.com/ant-design-draggable-modal
+[package]: https://www.npmjs.com/package/ant-design-draggable-modal
+[version-badge]: https://img.shields.io/npm/v/ant-design-draggable-modal.svg?style=flat-square
+[license-badge]: https://img.shields.io/npm/l/ant-design-draggable-modal.svg?style=flat-square
+[license]: https://github.com/dylanvann/ant-design-draggable-modal/blob/master/LICENSE
+[twitter]: https://twitter.com/home?status=Check%20out%20ant-design-draggable-modal%20by%20%40atomarranger%20https%3A//github.com/DylanVann/ant-design-draggable-modal
+[twitter-badge]: https://img.shields.io/twitter/url/https/github.com/DylanVann/ant-design-draggable-modal.svg?style=social
+[github-watch-badge]: https://img.shields.io/github/watchers/dylanvann/ant-design-draggable-modal.svg?style=social
+[github-watch]: https://github.com/dylanvann/ant-design-draggable-modal/watchers
+[github-star-badge]: https://img.shields.io/github/stars/dylanvann/ant-design-draggable-modal.svg?style=social
+[github-star]: https://github.com/dylanvann/ant-design-draggable-modal/stargazers
+
+<!-- prettier-ignore-end -->
