@@ -16,6 +16,7 @@
     "module": "dist/index.es.js",
     "scripts": {
         "build": "rollup -c",
+        "prepublishOnly": "cp ../../README.md ./",
         "start": "rollup -c -w",
         "test": "jest"
     },
