@@ -15,7 +15,7 @@ export const useResize = (
     y: number,
     width: number,
     height: number,
-    onResize: (x: number, y: number, width: number, height: number) => void,
+    onResize: (args: { x: number; y: number; width: number; height: number }) => void,
 ): ((e: React.MouseEvent) => void) => {
     const [dragging, setDragging] = useState(false)
     const [initialDragState, setInitialDragState] = useState<InitialState>({
@@ -58,7 +58,7 @@ export const useResize = (
                 let dy = e.clientY - mouseDownY
                 const width = initWidth + dx
                 const height = initHeight + dy
-                return onResize(initX, initY, width, height)
+                return onResize({ x: initX, y: initY, width, height })
             }
         }
         window.addEventListener('mousemove', onMouseMove, { passive: true })

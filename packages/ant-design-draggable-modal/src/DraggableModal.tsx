@@ -6,6 +6,8 @@ import { DraggableModalInner, DraggableModalInnerProps } from './DraggableModalI
 import { getModalState } from './draggableModalReducer'
 import './DraggableModal.css'
 
+export type DraggableModalProps = DraggableModalInnerProps
+
 export const DraggableModal = (props: DraggableModalInnerProps): React.ReactElement => {
     // Get the unique ID of this modal.
     const id = useUID()

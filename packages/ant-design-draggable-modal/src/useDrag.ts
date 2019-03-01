@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from 'react'
 export const useDrag = (
     x: number,
     y: number,
-    onDrag: (x: number, y: number) => void,
+    onDrag: (args: { x: number; y: number }) => void,
 ): ((e: React.MouseEvent) => void) => {
     const [dragging, setDragging] = useState(false)
     const [initialDragState, setInitialDragState] = useState({
@@ -36,7 +36,7 @@ export const useDrag = (
                 let dy = e.clientY - mouseDownY
                 const x = initX + dx
                 const y = initY + dy
-                onDrag(x, y)
+                onDrag({ x, y })
             }
         }
         window.addEventListener('mousemove', onMouseMove, { passive: true })
