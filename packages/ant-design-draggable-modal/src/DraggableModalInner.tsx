@@ -29,8 +29,12 @@ export const DraggableModalInner = memo(
         // Bring this to the front if it's been opened with props.
         const visiblePrevious = usePrevious(visible)
         useEffect(() => {
-            if (visible && !visiblePrevious) {
-                dispatch({ type: 'visible', id })
+            if (visible !== visiblePrevious) {
+                if (visible) {
+                    dispatch({ type: 'show', id })
+                } else {
+                    dispatch({ type: 'hide', id })
+                }
             }
         }, [visible, visiblePrevious, id, dispatch])
 
@@ -41,7 +45,7 @@ export const DraggableModalInner = memo(
             [y, x, height],
         )
 
-        const onVisibleWithID = useCallback(() => dispatch({ type: 'visible', id }), [id, dispatch])
+        const onFocus = useCallback(() => dispatch({ type: 'focus', id }), [id, dispatch])
 
         const onDragWithID = useCallback(args => dispatch({ type: 'drag', id, ...args }), [
             dispatch,
@@ -61,12 +65,12 @@ export const DraggableModalInner = memo(
                 <div
                     className="ant-design-draggable-modal-title"
                     onMouseDown={onMouseDrag}
-                    onClick={onVisibleWithID}
+                    onClick={onFocus}
                 >
                     Title
                 </div>
             ),
-            [onMouseDrag, onVisibleWithID],
+            [onMouseDrag, onFocus],
         )
 
         return (

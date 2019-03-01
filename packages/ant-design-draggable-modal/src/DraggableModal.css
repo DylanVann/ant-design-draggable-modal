@@ -6,6 +6,7 @@
 .ant-design-draggable-modal .ant-modal {
     display: flex;
     max-width: none;
+    transform-origin: 50% 50% !important;
 }
 
 .ant-design-draggable-modal .ant-modal-content {

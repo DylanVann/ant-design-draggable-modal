@@ -1,6 +1,9 @@
 import { getWindowSize } from './getWindowSize'
 import { clamp } from './clamp'
 
+const mapObject = (o: any, f: any) =>
+    Object.assign({}, ...Object.keys(o).map(k => ({ [k]: f(o[k]) })))
+
 // ID for a specific modal.
 export type ModalID = string
 
@@ -11,6 +14,7 @@ export interface ModalState {
     width: number
     height: number
     zIndex: number
+    visible: boolean
 }
 
 // State of all modals.
@@ -34,13 +38,16 @@ export const initialModalsState: ModalsState = {
 export const initialModalState: ModalState = {
     x: 0,
     y: 0,
-    width: 500,
-    height: 300,
+    width: 800,
+    height: 800,
     zIndex: 0,
+    visible: false,
 }
 
 export type Action =
-    | { type: 'visible'; id: ModalID }
+    | { type: 'show'; id: ModalID }
+    | { type: 'hide'; id: ModalID }
+    | { type: 'focus'; id: ModalID }
     | { type: 'unmount'; id: ModalID }
     | { type: 'mount'; id: ModalID }
     | { type: 'windowResize'; size: { width: number; height: number } }
@@ -133,19 +140,67 @@ export const draggableModalReducer = (state: ModalsState, action: Action): Modal
                     },
                 },
             }
-        case 'visible':
+        case 'show': {
+            const modalState = state.modals[action.id]
+            const centerX = state.windowSize.width / 2 - modalState.width / 2
+            const centerY = state.windowSize.height / 2 - modalState.height / 2
+            const position = clampDrag(
+                state.windowSize.width,
+                state.windowSize.height,
+                centerX,
+                centerY,
+                modalState.width,
+                modalState.height,
+            )
+            const size = clampResize(
+                state.windowSize.width,
+                state.windowSize.height,
+                position.x,
+                position.y,
+                modalState.width,
+                modalState.height,
+            )
             return {
                 ...state,
                 maxZIndex: state.maxZIndex + 1,
                 modals: {
                     ...state.modals,
                     [action.id]: {
-                        ...initialModalState,
-                        ...state.modals[action.id],
+                        ...modalState,
+                        ...position,
+                        ...size,
+                        zIndex: state.maxZIndex + 1,
+                        visible: true,
+                    },
+                },
+            }
+        }
+        case 'focus':
+            const modalState = state.modals[action.id]
+            return {
+                ...state,
+                maxZIndex: state.maxZIndex + 1,
+                modals: {
+                    ...state.modals,
+                    [action.id]: {
+                        ...modalState,
                         zIndex: state.maxZIndex + 1,
                     },
                 },
             }
+        case 'hide': {
+            const modalState = state.modals[action.id]
+            return {
+                ...state,
+                modals: {
+                    ...state.modals,
+                    [action.id]: {
+                        ...modalState,
+                        visible: false,
+                    },
+                },
+            }
+        }
         case 'mount':
             return {
                 ...state,
@@ -171,32 +226,32 @@ export const draggableModalReducer = (state: ModalsState, action: Action): Modal
             return {
                 ...state,
                 windowSize: action.size,
-                modals: Object.keys(state.modals).reduce((modals, id) => {
+                modals: mapObject(state.modals, (modalState: ModalState) => {
+                    if (!modalState.visible) {
+                        return modalState
+                    }
                     const position = clampDrag(
                         state.windowSize.width,
                         state.windowSize.height,
-                        state.modals[id].x,
-                        state.modals[id].y,
-                        state.modals[id].width,
-                        state.modals[id].height,
+                        modalState.x,
+                        modalState.y,
+                        modalState.width,
+                        modalState.height,
                     )
                     const size = clampResize(
                         state.windowSize.width,
                         state.windowSize.height,
                         position.x,
                         position.y,
-                        state.modals[id].width,
-                        state.modals[id].height,
+                        modalState.width,
+                        modalState.height,
                     )
                     return {
-                        ...modals,
-                        [id]: {
-                            ...state.modals[id],
-                            ...position,
-                            ...size,
-                        },
+                        ...modalState,
+                        ...position,
+                        ...size,
                     }
-                }, {}),
+                }),
             }
         default:
             throw new Error()
