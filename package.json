@@ -18,11 +18,11 @@
         "trailingComma": "all"
     },
     "devDependencies": {
-        "antd": "^3.13.5",
-        "lerna": "^3.13.0",
+        "antd": "^3.13.6",
+        "lerna": "^3.13.1",
         "prettier": "^1.16.4",
-        "react": "^16.8.2",
-        "react-dom": "^16.8.2",
-        "typescript": "^3.3.3"
+        "react": "^16.8.3",
+        "react-dom": "^16.8.3",
+        "typescript": "^3.3.3333"
     }
 }
