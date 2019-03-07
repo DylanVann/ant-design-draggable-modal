@@ -19,7 +19,15 @@ interface ContextProps extends DraggableModalContextMethods {
 export type DraggableModalInnerProps = ModalProps & { children?: React.ReactNode } & ContextProps
 
 export const DraggableModalInner = memo(
-    ({ id, modalState, dispatch, visible, children, ...otherProps }: DraggableModalInnerProps) => {
+    ({
+        id,
+        modalState,
+        dispatch,
+        visible,
+        children,
+        title,
+        ...otherProps
+    }: DraggableModalInnerProps) => {
         // Call on mount and unmount.
         useEffect(() => {
             dispatch({ type: 'mount', id })
@@ -60,14 +68,14 @@ export const DraggableModalInner = memo(
         const onMouseDrag = useDrag(x, y, onDragWithID)
         const onMouseResize = useResize(x, y, width, height, onResizeWithID)
 
-        const title = useMemo(
+        const titleElement = useMemo(
             () => (
                 <div
                     className="ant-design-draggable-modal-title"
                     onMouseDown={onMouseDrag}
                     onClick={onFocus}
                 >
-                    Title
+                    {title}
                 </div>
             ),
             [onMouseDrag, onFocus],
@@ -82,7 +90,7 @@ export const DraggableModalInner = memo(
                 mask={false}
                 maskClosable={false}
                 zIndex={zIndex}
-                title={title}
+                title={titleElement}
                 visible={visible}
                 {...otherProps}
             >

@@ -6,7 +6,7 @@ import 'ant-design-draggable-modal/dist/index.css'
 
 const { Content, Footer } = Layout
 
-const ModalWithButton = () => {
+const ModalWithButton = props => {
     const [visible, setVisible] = useState(false)
     const onOk = useCallback(() => setVisible(true), [])
     const onCancel = useCallback(() => setVisible(false), [])
@@ -14,9 +14,9 @@ const ModalWithButton = () => {
     return (
         <>
             <Button onClick={onToggle} type={visible ? 'danger' : undefined} style={{ margin: 10 }}>
-                {visible ? 'Close' : 'Open'}
+                {visible ? `Close ${props.title}` : `Open ${props.title}`}
             </Button>
-            <DraggableModal visible={visible} onOk={onOk} onCancel={onCancel}>
+            <DraggableModal visible={visible} onOk={onOk} onCancel={onCancel} {...props}>
                 Body text.
             </DraggableModal>
         </>
@@ -32,9 +32,9 @@ const App = () => (
                     <Breadcrumb.Item>Draggable Modal</Breadcrumb.Item>
                 </Breadcrumb>
                 <div style={{ background: '#fff', padding: 24 }}>
-                    <ModalWithButton />
-                    <ModalWithButton />
-                    <ModalWithButton />
+                    <ModalWithButton title="Modal A" />
+                    <ModalWithButton title="Modal B" />
+                    <ModalWithButton title="Modal C" />
                 </div>
             </Content>
             <Footer style={{ textAlign: 'center' }}>
