@@ -5,6 +5,7 @@ import resolve from 'rollup-plugin-node-resolve'
 import json from 'rollup-plugin-json'
 import postcss from 'rollup-plugin-postcss'
 import filesize from 'rollup-plugin-filesize'
+import { terser } from 'rollup-plugin-terser'
 
 import pkg from './package.json'
 
@@ -37,6 +38,7 @@ export default {
             abortOnError: false,
         }),
         commonjs(),
+        terser(),
         filesize(),
     ],
 }

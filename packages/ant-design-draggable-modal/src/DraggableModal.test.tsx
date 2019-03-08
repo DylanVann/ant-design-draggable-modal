@@ -26,7 +26,7 @@ test('renders', () => {
         <div
           class="ant-modal zoom-appear"
           role="document"
-          style="margin: 0px; padding-bottom: 0px; pointer-events: auto; top: 234px; left: 262px; height: 300px; width: 500px;"
+          style="margin: 0px; padding-bottom: 0px; pointer-events: auto; top: 0px; left: 112px; height: 768px; width: 800px;"
         >
           <div
             style="width: 0px; height: 0px; overflow: hidden;"
@@ -72,10 +72,8 @@ test('renders', () => {
                 id="rcDialogTitle0"
               >
                 <div
-                  style="cursor: move;"
-                >
-                  Title
-                </div>
+                  class="ant-design-draggable-modal-title"
+                />
               </div>
             </div>
             <div
