@@ -28,6 +28,9 @@
         "preset": "ts-jest",
         "setupFilesAfterEnv": [
             "react-testing-library/cleanup-after-each"
+        ],
+        "modulePathIgnorePatterns": [
+            "<rootDir>/dist"
         ]
     },
     "dependencies": {
