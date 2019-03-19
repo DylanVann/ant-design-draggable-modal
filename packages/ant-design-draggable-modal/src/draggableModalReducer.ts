@@ -1,7 +1,7 @@
 import { getWindowSize } from './getWindowSize'
 import { clamp } from './clamp'
 
-const mapObject = (o: any, f: any) =>
+const mapObject = <T>(o: { [key: string]: T }, f: (value: T) => T): { [key: string]: T } =>
     Object.assign({}, ...Object.keys(o).map(k => ({ [k]: f(o[k]) })))
 
 // ID for a specific modal.
