@@ -78,7 +78,7 @@ export const DraggableModalInner = memo(
                     {title}
                 </div>
             ),
-            [onMouseDrag, onFocus],
+            [onMouseDrag, onFocus, title],
         )
 
         return (
