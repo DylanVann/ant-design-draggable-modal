@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {FunctionComponent, ReactElement, useContext} from 'react'
+import { FunctionComponent, ReactElement, useContext } from 'react'
 import { useUID } from 'react-uid'
 import { DraggableModalContext } from './DraggableModalContext'
 import { DraggableModalInner } from './DraggableModalInner'
@@ -7,9 +7,11 @@ import { getModalState } from './draggableModalReducer'
 import { ModalProps } from 'antd/lib/modal'
 import './DraggableModal.css'
 
-export type DraggableModalProps = ModalProps;
+export type DraggableModalProps = ModalProps
 
-export const DraggableModal: FunctionComponent<DraggableModalProps> = (props: DraggableModalProps): React.ReactElement => {
+export const DraggableModal: FunctionComponent<DraggableModalProps> = (
+    props: DraggableModalProps,
+): ReactElement => {
     // Get the unique ID of this modal.
     const id = useUID()
 
