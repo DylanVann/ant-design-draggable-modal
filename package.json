@@ -27,8 +27,5 @@
         "react-dom": "^16.8.4",
         "typescript": "^3.8.3",
         "wsrun": "^5.2.0"
-    },
-    "engines": {
-        "node": ">=10"
     }
 }
