@@ -6,7 +6,10 @@ import { DraggableModalInner } from './DraggableModalInner'
 import { getModalState } from './draggableModalReducer'
 import { ModalProps } from 'antd/lib/modal'
 
-export type DraggableModalProps = ModalProps
+export interface DraggableModalProps extends ModalProps {
+    initialWidth: number
+    initialHeight: number
+}
 
 export const DraggableModal: FunctionComponent<DraggableModalProps> = (
     props: DraggableModalProps,
@@ -21,7 +24,12 @@ export const DraggableModal: FunctionComponent<DraggableModalProps> = (
     }
 
     const { dispatch, state } = modalProvider
-    const modalState = getModalState(state, id)
+    const modalState = getModalState({
+        state,
+        id,
+        initialHeight: props.initialHeight,
+        initialWidth: props.initialWidth,
+    })
 
     // We do this so that we don't re-render all modals for every state change.
     // DraggableModalInner uses React.memo, so it only re-renders if

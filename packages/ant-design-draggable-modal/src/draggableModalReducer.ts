@@ -44,6 +44,20 @@ export const initialModalState: ModalState = {
     visible: false,
 }
 
+const getInitialModalState = ({
+    initialWidth = initialModalState.width,
+    initialHeight = initialModalState.height,
+}: {
+    initialWidth?: number
+    initialHeight?: number
+}) => {
+    return {
+        ...initialModalState,
+        width: initialWidth,
+        height: initialHeight,
+    }
+}
+
 export type Action =
     | { type: 'show'; id: ModalID }
     | { type: 'hide'; id: ModalID }
@@ -61,11 +75,20 @@ export type Action =
           height: number
       }
 
-export const getModalState = (state: ModalsState, id: ModalID): ModalState =>
-    state.modals[id] || initialModalState
+export const getModalState = ({
+    state,
+    id,
+    initialWidth,
+    initialHeight,
+}: {
+    state: ModalsState
+    id: ModalID
+    initialWidth?: number
+    initialHeight?: number
+}): ModalState => state.modals[id] || getInitialModalState({ initialWidth, initialHeight })
 
 const getNextZIndex = (state: ModalsState, id: string): number =>
-    getModalState(state, id).zIndex === state.maxZIndex ? state.maxZIndex : state.maxZIndex + 1
+    getModalState({ state, id }).zIndex === state.maxZIndex ? state.maxZIndex : state.maxZIndex + 1
 
 const clampDrag = (
     windowWidth: number,
