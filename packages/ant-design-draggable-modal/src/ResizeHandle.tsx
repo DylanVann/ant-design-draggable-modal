@@ -1,5 +1,4 @@
 import * as React from 'react'
-import './ResizeHandle.css'
 
 export const ResizeHandle = (
     props: React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>,

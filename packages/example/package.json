@@ -9,6 +9,12 @@
         "start": "react-scripts start",
         "test": "react-scripts test"
     },
+    "browserslist": [
+        ">0.2%",
+        "not dead",
+        "not ie <= 11",
+        "not op_mini all"
+    ],
     "eslintConfig": {
         "extends": "react-app"
     },
@@ -19,12 +25,6 @@
         "react-scripts": "^3.4.1"
     },
     "devDependencies": {
-        "serve": "^10.1.2"
-    },
-    "browserslist": [
-        ">0.2%",
-        "not dead",
-        "not ie <= 11",
-        "not op_mini all"
-    ]
+        "serve": "^11.3.0"
+    }
 }

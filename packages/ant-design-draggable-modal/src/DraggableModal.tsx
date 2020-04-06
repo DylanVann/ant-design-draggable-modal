@@ -5,7 +5,6 @@ import { DraggableModalContext } from './DraggableModalContext'
 import { DraggableModalInner } from './DraggableModalInner'
 import { getModalState } from './draggableModalReducer'
 import { ModalProps } from 'antd/lib/modal'
-import './DraggableModal.css'
 
 export type DraggableModalProps = ModalProps
 
