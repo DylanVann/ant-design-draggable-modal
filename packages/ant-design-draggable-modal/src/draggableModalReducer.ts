@@ -63,7 +63,7 @@ export type Action =
     | { type: 'hide'; id: ModalID }
     | { type: 'focus'; id: ModalID }
     | { type: 'unmount'; id: ModalID }
-    | { type: 'mount'; id: ModalID }
+    | { type: 'mount'; id: ModalID; intialState: { initialWidth?: number; initialHeight?: number } }
     | { type: 'windowResize'; size: { width: number; height: number } }
     | { type: 'drag'; id: ModalID; x: number; y: number }
     | {
@@ -225,15 +225,16 @@ export const draggableModalReducer = (state: ModalsState, action: Action): Modal
             }
         }
         case 'mount':
+            const initialState = getInitialModalState(action.intialState)
             return {
                 ...state,
                 maxZIndex: state.maxZIndex + 1,
                 modals: {
                     ...state.modals,
                     [action.id]: {
-                        ...initialModalState,
-                        x: state.windowSize.width / 2 - initialModalState.width / 2,
-                        y: state.windowSize.height / 2 - initialModalState.height / 2,
+                        ...initialState,
+                        x: state.windowSize.width / 2 - initialState.width / 2,
+                        y: state.windowSize.height / 2 - initialState.height / 2,
                         zIndex: state.maxZIndex + 1,
                     },
                 },

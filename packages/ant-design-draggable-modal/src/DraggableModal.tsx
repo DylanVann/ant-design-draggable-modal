@@ -7,8 +7,8 @@ import { getModalState } from './draggableModalReducer'
 import { ModalProps } from 'antd/lib/modal'
 
 export interface DraggableModalProps extends ModalProps {
-    initialWidth: number
-    initialHeight: number
+    initialWidth?: number
+    initialHeight?: number
 }
 
 export const DraggableModal: FunctionComponent<DraggableModalProps> = (
