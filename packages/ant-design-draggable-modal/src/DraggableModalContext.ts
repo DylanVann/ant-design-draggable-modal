@@ -10,3 +10,7 @@ export interface DraggableModalContextValue extends DraggableModalContextMethods
 }
 
 export const DraggableModalContext = React.createContext<DraggableModalContextValue | null>(null)
+
+if (process.env.NODE_ENV !== 'production') {
+    DraggableModalContext.displayName = 'DraggableModalContext'
+}
