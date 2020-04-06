@@ -7,8 +7,8 @@
     ],
     "scripts": {
         "build": "lerna run build --stream",
-        "//": "Using this until issue is resolved: https://github.com/facebook/create-react-app/issues/8685",
         "start": "wsrun start",
+        "start_comment": "Using this until issue is resolved: https://github.com/facebook/create-react-app/issues/8685",
         "test": "lerna run test --stream",
         "test-ci": "lerna run test-ci --stream"
     },
@@ -27,5 +27,8 @@
         "react-dom": "^16.8.4",
         "typescript": "^3.8.3",
         "wsrun": "^5.2.0"
+    },
+    "engines": {
+        "node": ">=10"
     }
 }
