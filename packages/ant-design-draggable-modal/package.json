@@ -22,7 +22,7 @@
         "build": "yarn build:bundle && yarn build:copy",
         "build:bundle": "tsdx build",
         "build:copy": "cp ../../README.md ./ && cp ./index.css ./dist",
-        "start": "tsdx watch",
+        "start": "tsdx watch --noClean",
         "lint": "tsdx lint src",
         "test": "tsdx test --passWithNoTests",
         "test-ci": "yarn build && yarn lint && yarn test"
