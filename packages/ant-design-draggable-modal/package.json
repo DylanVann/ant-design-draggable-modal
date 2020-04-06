@@ -1,6 +1,6 @@
 {
     "name": "ant-design-draggable-modal",
-    "version": "0.0.13",
+    "version": "0.0.14",
     "description": "Modal from Ant Design, draggable.",
     "homepage": "https://github.com/DylanVann/ant-design-draggable-modal#readme",
     "repository": {
@@ -9,6 +9,9 @@
     },
     "license": "MIT",
     "author": "DylanVann",
+    "sideEffects": [
+        "dist/index.css"
+    ],
     "main": "dist/index.js",
     "module": "dist/ant-design-draggable-modal.esm.js",
     "typings": "dist/index.d.ts",
@@ -19,6 +22,7 @@
         "build": "yarn build:bundle && yarn build:copy",
         "build:bundle": "tsdx build",
         "build:copy": "cp ../../README.md ./ && cp ./index.css ./dist",
+        "start": "tsdx watch",
         "lint": "tsdx lint src",
         "test": "tsdx test --passWithNoTests",
         "test-ci": "yarn build && yarn lint && yarn test"
