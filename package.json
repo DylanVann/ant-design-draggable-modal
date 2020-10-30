@@ -1,16 +1,13 @@
 {
-    "name": "ant-design-draggable-modal",
     "private": true,
-    "license": "MIT",
     "workspaces": [
         "packages/*"
     ],
     "scripts": {
-        "build": "lerna run build --stream",
+        "build": "wsrun --stages build",
+        "dev": "wsrun --exclude-missing dev",
         "start": "wsrun start",
-        "start_comment": "Using this until issue is resolved: https://github.com/facebook/create-react-app/issues/8685",
-        "test": "lerna run test --stream",
-        "test-ci": "lerna run test-ci --stream"
+        "test-ci": "wsrun --exclude-missing test-ci"
     },
     "prettier": {
         "printWidth": 100,
@@ -20,12 +17,11 @@
         "trailingComma": "all"
     },
     "devDependencies": {
-        "antd": "^3.15.1",
-        "lerna": "^3.13.1",
-        "prettier": "^1.16.4",
+        "antd": "^4",
+        "prettier": "^2.1.2",
         "react": "^16.8.4",
         "react-dom": "^16.8.4",
-        "typescript": "^3.8.3",
-        "wsrun": "^5.2.0"
+        "typescript": "^4.0.5",
+        "wsrun": "^5.2.4"
     }
 }
