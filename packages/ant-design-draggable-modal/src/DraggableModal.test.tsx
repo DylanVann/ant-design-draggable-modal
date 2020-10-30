@@ -22,13 +22,13 @@ test('renders', () => {
                 aria-labelledby="rcDialogTitle0"
                 class="ant-modal-wrap ant-design-draggable-modal"
                 role="dialog"
-                style="z-index: 2;"
+                style="z-index: 1;"
                 tabindex="-1"
               >
                 <div
                   class="ant-modal"
                   role="document"
-                  style="margin: 0px; padding-bottom: 0px; pointer-events: auto; top: 0px; left: 112px; height: 768px; width: 800px;"
+                  style="margin: 0px; padding-bottom: 0px; pointer-events: auto; top: -16px; left: 112px; height: 800px; width: 800px;"
                 >
                   <div
                     aria-hidden="true"
