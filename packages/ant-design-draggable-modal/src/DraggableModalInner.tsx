@@ -35,7 +35,7 @@ function DraggableModalInnerNonMemo({
     useEffect(() => {
         dispatch({ type: 'mount', id, intialState: { initialWidth, initialHeight } })
         return () => dispatch({ type: 'unmount', id })
-    }, [dispatch, id])
+    }, [dispatch, id, initialWidth, initialHeight])
 
     // Bring this to the front if it's been opened with props.
     const visiblePrevious = usePrevious(visible)
