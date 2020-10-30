@@ -21,7 +21,7 @@ Modal from Ant Design, draggable.
 </a>
 </div>
 
-## 🌎 [Example](https://distracted-hugle-66cb55.netlify.com/)
+## 🌎 [Example](https://ant-design-draggable-modal.netlify.app/)
 
 ## ✨ Features
 
