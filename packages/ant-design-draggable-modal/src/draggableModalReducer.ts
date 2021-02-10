@@ -45,16 +45,24 @@ export const initialModalState: ModalState = {
 }
 
 const getInitialModalState = ({
+    state,
     initialWidth = initialModalState.width,
     initialHeight = initialModalState.height,
+    initialX = state.windowSize.width / 2 - initialWidth / 2,
+    initialY = state.windowSize.height / 2 - initialHeight / 2,
 }: {
+    state: ModalsState
     initialWidth?: number
     initialHeight?: number
+    initialX?: number
+    initialY?: number
 }) => {
     return {
         ...initialModalState,
         width: initialWidth,
         height: initialHeight,
+        x: initialX,
+        y: initialY,
     }
 }
 
@@ -63,7 +71,7 @@ export type Action =
     | { type: 'hide'; id: ModalID }
     | { type: 'focus'; id: ModalID }
     | { type: 'unmount'; id: ModalID }
-    | { type: 'mount'; id: ModalID; intialState: { initialWidth?: number; initialHeight?: number } }
+    | { type: 'mount'; id: ModalID; intialState: { initialWidth?: number; initialHeight?: number; initialX?: number; initialY?: number } }
     | { type: 'windowResize'; size: { width: number; height: number } }
     | { type: 'drag'; id: ModalID; x: number; y: number }
     | {
@@ -80,12 +88,16 @@ export const getModalState = ({
     id,
     initialWidth,
     initialHeight,
+    initialX,
+    initialY,
 }: {
     state: ModalsState
     id: ModalID
     initialWidth?: number
     initialHeight?: number
-}): ModalState => state.modals[id] || getInitialModalState({ initialWidth, initialHeight })
+    initialX?: number
+    initialY?: number
+}): ModalState => state.modals[id] || getInitialModalState({ state, initialWidth, initialHeight, initialX, initialY })
 
 const getNextZIndex = (state: ModalsState, id: string): number =>
     getModalState({ state, id }).zIndex === state.maxZIndex ? state.maxZIndex : state.maxZIndex + 1
@@ -165,13 +177,11 @@ export const draggableModalReducer = (state: ModalsState, action: Action): Modal
             }
         case 'show': {
             const modalState = state.modals[action.id]
-            const centerX = state.windowSize.width / 2 - modalState.width / 2
-            const centerY = state.windowSize.height / 2 - modalState.height / 2
             const position = clampDrag(
                 state.windowSize.width,
                 state.windowSize.height,
-                centerX,
-                centerY,
+                modalState.x,
+                modalState.y,
                 modalState.width,
                 modalState.height,
             )
@@ -225,7 +235,7 @@ export const draggableModalReducer = (state: ModalsState, action: Action): Modal
             }
         }
         case 'mount':
-            const initialState = getInitialModalState(action.intialState)
+            const initialState = getInitialModalState({state, ...action.intialState})
             return {
                 ...state,
                 maxZIndex: state.maxZIndex + 1,
@@ -233,8 +243,6 @@ export const draggableModalReducer = (state: ModalsState, action: Action): Modal
                     ...state.modals,
                     [action.id]: {
                         ...initialState,
-                        x: state.windowSize.width / 2 - initialState.width / 2,
-                        y: state.windowSize.height / 2 - initialState.height / 2,
                         zIndex: state.maxZIndex + 1,
                     },
                 },
