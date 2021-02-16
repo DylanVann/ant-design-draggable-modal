@@ -11,6 +11,7 @@ export interface DraggableModalProps extends ModalProps {
     initialHeight?: number
     initialX?: number
     initialY?: number
+    resizable?: boolean
 }
 
 export const DraggableModal: FunctionComponent<DraggableModalProps> = (
