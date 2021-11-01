@@ -1,19 +1,19 @@
 {
-  "name": "ant-design-draggable-modal-example",
-  "version": "0.0.0",
-  "license": "MIT",
-  "scripts": {
-    "build": "vite build",
-    "dev": "vite"
-  },
-  "dependencies": {
-    "@pika/react": "^16.13.1",
-    "@pika/react-dom": "^16.13.1",
-    "ant-design-draggable-modal": "*",
-    "antd": "^4"
-  },
-  "devDependencies": {
-    "vite": "^1.0.0-rc.8",
-    "vite-plugin-react": "^3.0.0"
-  }
+    "name": "ant-design-draggable-modal-example",
+    "version": "0.0.0",
+    "license": "MIT",
+    "scripts": {
+        "build": "vite build",
+        "dev": "vite"
+    },
+    "dependencies": {
+        "react": "^17.0.0",
+        "react-dom": "^17.0.0",
+        "ant-design-draggable-modal": "*",
+        "antd": "^4.16.13"
+    },
+    "devDependencies": {
+        "@vitejs/plugin-react": "^1.0.7",
+        "vite": "^2.6.13"
+    }
 }

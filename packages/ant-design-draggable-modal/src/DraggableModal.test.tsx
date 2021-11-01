@@ -11,6 +11,7 @@ test('renders', () => {
     )
     expect(document.body).toMatchInlineSnapshot(`
         <body
+          class="ant-scrolling-effect"
           style="overflow: hidden; overflow-x: hidden; overflow-y: hidden;"
         >
           <div />
@@ -53,7 +54,6 @@ test('renders', () => {
                         >
                           <svg
                             aria-hidden="true"
-                            class=""
                             data-icon="close"
                             fill="currentColor"
                             focusable="false"
