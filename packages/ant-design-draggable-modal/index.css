@@ -2,7 +2,7 @@
  * NOTE: This is not compiled.
  */
 
-.ant-design-draggable-modal {
+ .ant-design-draggable-modal {
     pointer-events: none;
     overflow: hidden !important;
 }
@@ -44,6 +44,19 @@
     padding: 16px;
 }
 
+.ant-design-draggable-modal-resize-handle {
+    right: -10px;
+    width: 44px;
+    bottom: -10px;
+    cursor: se-resize;
+    height: 44px;
+    position: absolute;
+}
+
+.ant-design-draggable-modal--without-resize {
+    display: none;
+}
+
 .ant-design-draggable-modal-resize-handle-inner {
     width: 12px;
     right: 14px;
@@ -55,11 +68,3 @@
     border-left: 0;
 }
 
-.ant-design-draggable-modal-resize-handle {
-    right: -10px;
-    width: 44px;
-    bottom: -10px;
-    cursor: se-resize;
-    height: 44px;
-    position: absolute;
-}
