@@ -95,7 +95,7 @@ function DraggableModalInnerNonMemo({
             maskClosable={false}
             zIndex={zIndex}
             title={titleElement}
-            visible={visible}
+            open={visible}
             {...otherProps}
         >
             {children}
