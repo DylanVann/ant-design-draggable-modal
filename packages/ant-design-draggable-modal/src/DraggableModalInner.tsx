@@ -73,15 +73,20 @@ function DraggableModalInnerNonMemo({
     const onMouseResize = useResize(x, y, width, height, onResizeWithID)
 
     const titleElement = useMemo(
-        () => (
-            <div
-                className="ant-design-draggable-modal-title"
-                onMouseDown={onMouseDrag}
-                onClick={onFocus}
-            >
-                {title}
-            </div>
-        ),
+        () => {
+            if (title) {
+                return (
+                    <div
+                        className="ant-design-draggable-modal-title"
+                        onMouseDown={onMouseDrag}
+                        onClick={onFocus}
+                    >
+                        {title}
+                    </div>
+                )
+            }
+            return title
+        },
         [onMouseDrag, onFocus, title],
     )
 
