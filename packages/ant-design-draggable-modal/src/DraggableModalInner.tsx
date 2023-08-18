@@ -24,7 +24,7 @@ function DraggableModalInnerNonMemo({
     id,
     modalState,
     dispatch,
-    visible,
+    open,
     children,
     title,
     initialWidth,
@@ -38,16 +38,16 @@ function DraggableModalInnerNonMemo({
     }, [dispatch, id, initialWidth, initialHeight])
 
     // Bring this to the front if it's been opened with props.
-    const visiblePrevious = usePrevious(visible)
+    const openPrevious = usePrevious(open)
     useEffect(() => {
-        if (visible !== visiblePrevious) {
-            if (visible) {
+        if (open !== openPrevious) {
+            if (open) {
                 dispatch({ type: 'show', id })
             } else {
                 dispatch({ type: 'hide', id })
             }
         }
-    }, [visible, visiblePrevious, id, dispatch])
+    }, [open, openPrevious, id, dispatch])
 
     const { zIndex, x, y, width, height } = modalState
 
@@ -59,11 +59,13 @@ function DraggableModalInnerNonMemo({
 
     const onFocus = useCallback(() => dispatch({ type: 'focus', id }), [id, dispatch])
 
+    // @ts-ignore
     const onDragWithID = useCallback(args => dispatch({ type: 'drag', id, ...args }), [
         dispatch,
         id,
     ])
 
+    // @ts-ignore
     const onResizeWithID = useCallback(args => dispatch({ type: 'resize', id, ...args }), [
         dispatch,
         id,
@@ -95,7 +97,7 @@ function DraggableModalInnerNonMemo({
             maskClosable={false}
             zIndex={zIndex}
             title={titleElement}
-            visible={visible}
+            open={open}
             {...otherProps}
         >
             {children}

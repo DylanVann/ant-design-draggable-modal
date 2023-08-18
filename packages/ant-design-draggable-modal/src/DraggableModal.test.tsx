@@ -6,7 +6,7 @@ import { DraggableModal } from './DraggableModal'
 test('renders', () => {
     render(
         <DraggableModalProvider>
-            <DraggableModal visible />
+            <DraggableModal open />
         </DraggableModalProvider>,
     )
     expect(document.body).toMatchInlineSnapshot(`
