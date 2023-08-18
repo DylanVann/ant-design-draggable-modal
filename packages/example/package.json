@@ -7,13 +7,13 @@
         "dev": "vite"
     },
     "dependencies": {
-        "react": "^17.0.0",
-        "react-dom": "^17.0.0",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
         "ant-design-draggable-modal": "*",
-        "antd": "^4.16.13"
+        "antd": "^5.8.3"
     },
     "devDependencies": {
-        "@vitejs/plugin-react": "^1.0.7",
-        "vite": "^2.6.13"
+        "@vitejs/plugin-react": "^4.0.4",
+        "vite": "^4.4.9"
     }
 }

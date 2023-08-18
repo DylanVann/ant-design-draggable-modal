@@ -14,7 +14,7 @@ export interface ModalState {
     width: number
     height: number
     zIndex: number
-    visible: boolean
+    open: boolean
 }
 
 // State of all modals.
@@ -41,7 +41,7 @@ export const initialModalState: ModalState = {
     width: 800,
     height: 800,
     zIndex: 0,
-    visible: false,
+    open: false,
 }
 
 const getInitialModalState = ({
@@ -193,7 +193,7 @@ export const draggableModalReducer = (state: ModalsState, action: Action): Modal
                         ...position,
                         ...size,
                         zIndex: state.maxZIndex + 1,
-                        visible: true,
+                        open: true,
                     },
                 },
             }
@@ -219,7 +219,7 @@ export const draggableModalReducer = (state: ModalsState, action: Action): Modal
                     ...state.modals,
                     [action.id]: {
                         ...modalState,
-                        visible: false,
+                        open: false,
                     },
                 },
             }
@@ -251,7 +251,7 @@ export const draggableModalReducer = (state: ModalsState, action: Action): Modal
                 ...state,
                 windowSize: action.size,
                 modals: mapObject(state.modals, (modalState: ModalState) => {
-                    if (!modalState.visible) {
+                    if (!modalState.open) {
                         return modalState
                     }
                     const position = clampDrag(

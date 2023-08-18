@@ -52,17 +52,17 @@ NOTE: You must use `react@16.8.0` and `react-dom@16.8.0` or higher.
 import React, { useState, useCallback } from 'react'
 import { Button } from 'antd'
 import { DraggableModal, DraggableModalProvider } from 'ant-design-draggable-modal'
-import 'antd/dist/antd.css'
+import 'antd/dist/reset.css'
 import 'ant-design-draggable-modal/dist/index.css'
 
 const ModalWithButton = () => {
-    const [visible, setVisible] = useState(false)
-    const onOk = useCallback(() => setVisible(true), [])
-    const onCancel = useCallback(() => setVisible(false), [])
+    const [open, setOpen] = useState(false)
+    const onOk = useCallback(() => setOpen(true), [])
+    const onCancel = useCallback(() => setOpen(false), [])
     return (
         <>
             <Button onClick={onOk}>Open</Button>
-            <DraggableModal visible={visible} onOk={onOk} onCancel={onCancel}>
+            <DraggableModal open={open} onOk={onOk} onCancel={onCancel}>
                 Body text.
             </DraggableModal>
         </>

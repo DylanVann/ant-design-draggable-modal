@@ -5,7 +5,7 @@ import {
     DraggableModalProvider,
     DraggableModalProps,
 } from 'ant-design-draggable-modal'
-import 'antd/dist/antd.css'
+import 'antd/dist/reset.css'
 import 'ant-design-draggable-modal/dist/index.css'
 
 const { Content, Footer } = Layout
@@ -15,16 +15,16 @@ interface ModalWithButtonProps extends DraggableModalProps {
 }
 
 function ModalWithButton(props: ModalWithButtonProps) {
-    const [visible, setVisible] = useState(false)
-    const onOk = useCallback(() => setVisible(true), [])
-    const onCancel = useCallback(() => setVisible(false), [])
-    const onToggle = useCallback(() => setVisible(v => !v), [])
+    const [open, setOpen] = useState(false)
+    const onOk = useCallback(() => setOpen(true), [])
+    const onCancel = useCallback(() => setOpen(false), [])
+    const onToggle = useCallback(() => setOpen(v => !v), [])
     return (
         <>
-            <Button onClick={onToggle} type={visible ? 'danger' : undefined} style={{ margin: 10 }}>
-                {visible ? `Close ${props.title}` : `Open ${props.title}`}
+            <Button onClick={onToggle} type={open ? 'danger' : undefined} style={{ margin: 10 }}>
+                {open ? `Close ${props.title}` : `Open ${props.title}`}
             </Button>
-            <DraggableModal visible={visible} onOk={onOk} onCancel={onCancel} {...props}>
+            <DraggableModal open={open} onOk={onOk} onCancel={onCancel} {...props}>
                 Body text.
             </DraggableModal>
         </>
@@ -35,10 +35,7 @@ const App = () => (
     <DraggableModalProvider>
         <Layout className="layout" style={{ minHeight: '100vh' }}>
             <Content style={{ padding: '0 50px' }}>
-                <Breadcrumb style={{ margin: '16px 0' }}>
-                    <Breadcrumb.Item>Ant Design</Breadcrumb.Item>
-                    <Breadcrumb.Item>Draggable Modal</Breadcrumb.Item>
-                </Breadcrumb>
+                <Breadcrumb style={{ margin: '16px 0' }} items={[{ title: "Ant Design" }, { title: "Draggable Modal" }]} />
                 <div style={{ background: '#fff', padding: 24 }}>
                     <ModalWithButton title="Modal A" />
                     <ModalWithButton title="Modal B" initialWidth={200} initialHeight={100} />
