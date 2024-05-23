@@ -1,12 +1,7 @@
-import React, { useState, useCallback } from 'react'
-import { Button, Layout, Breadcrumb } from 'antd'
-import {
-    DraggableModal,
-    DraggableModalProvider,
-    DraggableModalProps,
-} from 'ant-design-draggable-modal'
-import 'antd/dist/antd.css'
-import 'ant-design-draggable-modal/dist/index.css'
+import { DraggableModal, DraggableModalProps, DraggableModalProvider } from '@cubetiq/antd-modal'
+import '@cubetiq/antd-modal/dist/index.css'
+import { Breadcrumb, Button, Layout } from 'antd'
+import { useCallback, useState } from 'react'
 
 const { Content, Footer } = Layout
 
@@ -18,13 +13,13 @@ function ModalWithButton(props: ModalWithButtonProps) {
     const [visible, setVisible] = useState(false)
     const onOk = useCallback(() => setVisible(true), [])
     const onCancel = useCallback(() => setVisible(false), [])
-    const onToggle = useCallback(() => setVisible(v => !v), [])
+    const onToggle = useCallback(() => setVisible((v) => !v), [])
     return (
         <>
-            <Button onClick={onToggle} type={visible ? 'danger' : undefined} style={{ margin: 10 }}>
+            <Button onClick={onToggle} type={visible ? 'dashed' : 'primary'} style={{ margin: 10 }}>
                 {visible ? `Close ${props.title}` : `Open ${props.title}`}
             </Button>
-            <DraggableModal visible={visible} onOk={onOk} onCancel={onCancel} {...props}>
+            <DraggableModal open={visible} onOk={onOk} onCancel={onCancel} {...props}>
                 Body text.
             </DraggableModal>
         </>
@@ -41,14 +36,12 @@ const App = () => (
                 </Breadcrumb>
                 <div style={{ background: '#fff', padding: 24 }}>
                     <ModalWithButton title="Modal A" />
-                    <ModalWithButton title="Modal B" initialWidth={200} initialHeight={100} />
+                    <ModalWithButton title="Modal B" initialWidth={500} initialHeight={100} />
                     <ModalWithButton title="Modal C" />
                 </div>
             </Content>
             <Footer style={{ textAlign: 'center' }}>
-                <a href="https://github.com/DylanVann/ant-design-draggable-modal">GitHub</a>
-                {' | '}
-                <a href="https://twitter.com/atomarranger">@atomarranger</a>
+                <a href="https://github.com/sombochea/antd-modal">GitHub</a>
             </Footer>
         </Layout>
     </DraggableModalProvider>
